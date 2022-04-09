@@ -1,0 +1,63 @@
+#VRML_SIM R2022a utf8
+# license: Copyright Cyberbotics Ltd. Licensed for use only with Webots.
+# license url: https://cyberbotics.com/webots_assets_license
+# documentation url: https://www.cyberbotics.com/doc/guide/create
+# iRobot Create is a hobbyist robot manufactured by iRobot that is based on the Roomba platform.
+
+PROTO Base [
+  field SFVec3f    translation     3.12 -0.6 0.15           # Is `Transform.translation`.
+  field SFRotation rotation        0 0 1 0                  # Is `Transform.rotation`.
+  field SFString   name            "base robot"             # Is `Solid.name`.
+]
+{
+Solid {
+    translation IS translation
+    rotation IS rotation
+    children [
+        DEF BODY Shape {
+        appearance PBRAppearance {
+            baseColor 0 0 0
+            roughness 1
+            metalness 0
+        }
+        geometry Box {
+            size 0.09 0.35 0.3
+        }
+        }
+        Transform {
+        translation -0.23 0 -0.15
+        children [
+            Shape {
+            appearance PBRAppearance {
+                baseColor 0 0 0
+                roughness 1
+                metalness 0
+            }
+            geometry Box {
+                size 0.38 0.35 0.001
+            }
+            }
+        ]
+        }
+        Transform {
+        translation -0.0446 0 0.06
+        children [
+            Shape {
+            appearance PBRAppearance {
+                baseColorMap ImageTexture {
+                url ["./Textures/Logo.png"]
+                }
+                roughness 1
+                metalness 0
+            }
+            geometry Box {
+                size 0.001 0.3 0.1
+            }
+            }
+        ]
+        }
+    ]
+    name IS name
+    boundingObject USE BODY
+}
+}
